@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Prediction System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #f2f2f2;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .header {
+            margin: 25px 0;
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        .container form {
+            display: grid;
+            grid-template-columns: repeat(2, auto);
+            justify-content: center;
+            align-items: center;
+            grid-gap: 25px;
+            font-size: 25px;
+        }
+
+        .entry {
+            margin: 5px;
+            display: grid;
+            justify-content: left;
+            align-items: center;
+            grid-gap: 25px;
+        }
+
+        .entry input,
+        select {
+            margin-left: 20px;
+            height: 25px;
+        }
+
+        form button {
+            height: 30px;
+        }
+
+        .result {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .creator {
+            color: rgb(0, 0, 0);
+            text-align: end;
+            margin-top: 30px;
+            padding-right: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="header"><b>Heart Disease Prediction System Using Machine Learning</b></div>
+<div class="container">
+    <form action="{{url_for('predict')}}" method="post">
+        <div class="entry"><label>Age<input type="text" name="age" placeholder="Enter Your Age"
+                                            required="required"/></label></div>
+        <div class="entry"><label for="sex">Sex
+            <select name="sex" id="sex">
+                <option value="1">Male</option>
+                <option value="0">Female</option>
+            </select></label></div>
+        <div class="entry"><label for="chestpaintype">Type of Chest Pain
+            <select name="chestpaintype" id="chestpaintype">
+                <option value="1">Typical Angina</option>
+                <option value="2">Atypical Angina</option>
+                <option value="3">Non-Anginal pain</option>
+                <option value="4">Asymptotic Pain</option>
+            </select></label></div>
+        <div class="entry"><label>Blood Pressure<input type="text" name="bloodpressue"
+                                                       placeholder="Blood Pressue"
+                                                       required="required"/></label></div>
+        <div class="entry"><label>Cholestrol<input type="text" name="cholestrol"
+                                                   placeholder="Cholestrol"
+                                                   required="required"/></label></div>
+        <div class="entry"><label for="fbs">FBS
+            <select name="fbs" id="fbs">
+                <option value="1">More Than 120</option>
+                <option value="0">Less Than 120</option>
+            </select></label></div>
+        <div class="entry"><label>EKG Result<input type="text" name="ekgresult"
+                                                   placeholder="EKG Value" required="required"/></label>
+        </div>
+        <div class="entry"><label>Max HR<input type="text" name="maxhr"
+                                               placeholder="Maximum Heart Rate"
+                                               required="required"/></label></div>
+        <div class="entry"><label>Exercise Angina<select name="exerciseangina"
+                                                         id="exerciseangina">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select></label></div>
+
+        <div class="entry"><label>ST Depression<input type="text" name="stdepression"
+                                                      placeholder="ST Depression"
+                                                      required="required"/></label></div>
+
+        <div class="entry"><label>Slope of ST<input type="text" name="slopeofst"
+                                                    placeholder="Slope of ST Depression"
+                                                    required="required"/></label></div>
+        <div class="entry"><label>Number of Vessels Fluro<input type="text"
+                                                                name="numberofvesselsfluro"
+                                                                placeholder="Number of Fluro Vessels"
+                                                                required="required"/></label>
+        </div>
+        <div class="entry"><label>Thallium<input type="text" name="thallium"
+                                                 placeholder="Thallium" required="required"/></label>
+        </div>
+        <button type="submit" class="submit"><strong>Predict Cancer</strong></button>
+    </form>
+</div>
+<div class="result">
+    <h1>{{ prediction_text }}</h1>
+</div>
+<div class="creator">
+    <p>Created by Rituraj Raman & Rishabh Sharma</p>
+</div>
+</body>
+
+</html>
